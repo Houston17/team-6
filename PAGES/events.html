@@ -19,6 +19,291 @@
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 
+
+  <script type="text/javascript">
+    var UserID;
+    class loadingClass {
+        constructor(number, top) {
+          this.number = number;
+          this.top = top;
+        }
+        checkTop(){
+          if(this.top == this.number){
+            document.getElementById('loading').style.display = "none";
+            document.getElementById('tweets').style.display = "block";
+          }
+        }
+        incrementNumber(){
+          this.number = this.number + 1;
+          this.checkTop();
+        }
+        turnOff(){
+          document.getElementById('loading').style.display = "none";
+          document.getElementById('notweets').style.display = "block";
+        }
+    }
+    function deleteAllTweets(){
+      var ref = firebase.database().ref('Users/' + UserID + '/RemoveTU');
+      var myNode = document.getElementById('tweets');
+      while (myNode.firstChild) {
+            myNode.removeChild(myNode.firstChild);
+        }
+      ref.once("value", function(snap) {
+        ref.set(snap.val() + 1);
+      });
+    }
+      
+    function addTweet(key, list, loadingC){
+          var tweetDiv = document.getElementById('tweets');
+          var div = document.createElement('div');
+          div.id = list;
+          twttr.widgets.createTweet(
+              key, div, 
+              {
+                conversation : 'none',    // or all
+                cards        : 'visible',  // or visible
+                linkColor    : '#cc0000', // default is blue
+                align        : 'center',
+                width        : '500px',
+                theme        : 'light'    // or dark
+              })
+            .then (function (el) {
+              loadingC.incrementNumber();
+            });
+          var goodButton = document.createElement('button');
+          var removeButton = document.createElement('button');
+          removeButton.id = key;
+          goodButton.id = key;
+          goodButton.style.float = "left";
+          goodButton.className = "button3";
+          goodButton.innerHTML = "Good";
+          goodButton.addEventListener("click", goodTweet, false);
+          div.appendChild(goodButton);
+          removeButton.style.float = "right";
+          removeButton.className = "button";
+          removeButton.innerHTML = "Remove";
+          removeButton.addEventListener("click", removeTweet, false);
+          div.appendChild(removeButton);
+          tweetDiv.appendChild(div);
+    }
+    function addNewTweets(list){
+        var userRef = firebase.database().ref('Users/' + UserID + '/tweetListsGeneral');
+        var tweetRef = userRef.child(list);
+        var tweetDiv = document.getElementById('tweets');
+        var lc = new loadingClass(0, 5);
+        document.getElementById('loading').style.display = "block";
+        userRef.on("value", function (snap) {
+            while (tweetDiv.firstChild) {
+              tweetDiv.removeChild(tweetDiv.firstChild);
+            }
+          if(snap.hasChild(list)){
+            document.getElementById('notweets').innerHTML = "";
+            tweetRef.orderByValue().limitToFirst(10).on("value", function (snap) {
+              snap.forEach( function (data) {
+                  addTweet(data.val().id_str, list, lc);
+              });
+            });
+          }
+          else {
+            lc.turnOff();
+            document.getElementById('notweets').innerHTML = "You have no Tweets to display";
+          }
+        });
+    }
+    function selectionChange(){
+      addNewTweets(document.getElementById('listUsedSelection').value);
+    }
+    function refreshSearch(){
+      var ref3 = firebase.database().ref('Users/' + UserID + '/CountSF');
+      ref3.once('value', function (snap) {
+          ref3.set(snap.val() + 1);
+      });
+    }
+      
+    function addTweetTraining(id, boolVal, list) {
+        var ref = firebase.database().ref('Users/' + UserID +  '/trainingDataLists');
+        //var ref2 = firebase.database().ref('TweetsShown/' + id);
+        var ref2 = firebase.database().ref('Users/' + UserID +  '/tweetListsGeneral/' + list +'/' + id);
+        var myNode = document.getElementById("tweets");
+        ref2.once("value", function (snap) {
+          ref.child(list).child(id).set(snap.val());
+        });
+        ref.child(list).child(id).child('result').set(boolVal);
+        ref2.remove();
+    }
+      
+    function removeTweetsOnPage(tweetDiv){
+        while (tweetDiv.firstChild) {
+            tweetDiv.removeChild(tweetDiv.firstChild);
+        }
+    }
+      
+    function goodTweet(e){
+        addTweetTraining(this.id, true, this.parentNode.id);
+        
+    }
+      
+    function removeTweet(e){
+        addTweetTraining(this.id, false, this.parentNode.id);
+    }
+      
+    function getNewTweets() {
+        var tweetDiv = document.getElementById("tweets");
+        var list = document.getElementById('listUsedSelection').value;
+        var ref = firebase.database().ref('Users/' + UserID +  '/tweetListsGeneral/' + list);
+        var ref2 = firebase.database().ref('Users/' + UserID +  '/trainingData/' + list);
+        var ref3 = firebase.database().ref('Users/' + UserID + '/CountFF2');
+        var array = {};
+        array.list = list;
+        var ref6 = firebase.database().ref('Users/' + UserID + '/Lists/' + list + '/count');
+        ref6.once("value", function(snap) {
+          array.listlength = snap.val();
+        });
+        ref3.set(array);
+        addNewTweets(list);
+    }
+    
+    /**
+     * Handles the sign in button press.
+     */
+      
+    function toggleTwitterSignIn() {
+      if (!firebase.auth().currentUser) {
+        // [START createprovider]
+        var provider = new firebase.auth.TwitterAuthProvider();
+        // [END createprovider]
+        // [START signin]
+        firebase.auth().signInWithPopup(provider).then(function(result) {
+          // This gives you a the Twitter OAuth 1.0 Access Token and Secret.
+          // You can use these server side with your app's credentials to access the Twitter API.
+          var token = result.credential.accessToken;
+          var secret = result.credential.secret;
+          var ref = firebase.database().ref('Users');
+          ref.once("value", function (snap) {
+              if(!(snap.hasChild(user.uid))){
+                  ref.child(user.uid).child('twitterAPI').child('token').set(token);
+                  ref.child(user.uid).child('twitterAPI').child('secret').set(secret);
+                  ref.child(user.uid).child('twitterAPI').child('consumerkey').set("P0dm1LRN2roL7EjtzD5ePy68t");
+                  ref.child(user.uid).child('twitterAPI').child('consumersecret').set("YgcMnGBJbuui5WkQ0RFpOtC3bTtW18mmeqIgHxuRWJ3lBLFFSq");
+                  ref.child(user.uid).child('CountFF').set(0);
+                  ref.child(user.uid).child('RemoveTU').set(0);
+                  ref.child(user.uid).child('CountSF').set(0);
+                  ref.child(user.uid).child('CountFF2').set(0);
+                  
+              }
+          });
+          // The signed-in user info.
+          var user = result.user;
+          // [START_EXCLUDE]
+          //document.getElementById('quickstart-oauthtoken').textContent = token;
+          //document.getElementById('quickstart-oauthsecret').textContent = secret;
+          // [END_EXCLUDE]
+        }).catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // The email of the user's account used.
+          var email = error.email;
+          // The firebase.auth.AuthCredential type that was used.
+          var credential = error.credential;
+          
+          // [START_EXCLUDE]
+          if (errorCode === 'auth/account-exists-with-different-credential') {
+            alert('You have already signed up with a different auth provider for that email.');
+            // If you are using multiple auth providers on your app you should handle linking
+            // the user's accounts here.
+          } else {
+            console.error(error);
+          }
+          // [END_EXCLUDE]
+        });
+        // [END signin]
+      } else {
+        // [START signout]
+        firebase.auth().signOut();
+        // [END signout]
+      }
+      // [START_EXCLUDE]
+      // [END_EXCLUDE]
+    }
+    /**
+     * initApp handles setting up UI event listeners and registering Firebase auth listeners:
+     *  - firebase.auth().onAuthStateChanged: This listener is called when the user is signed in or
+     *    out, and that is where we update the UI.
+     */
+    function initApp() {
+      // Listening for auth state changes.
+      // [START authstatelistener]
+      firebase.auth().onAuthStateChanged(function(user) {
+        // [START_EXCLUDE silent]
+        // [END_EXCLUDE]
+        if (user) {
+            UserID = user.uid;
+            document.getElementById('username').innerHTML = user.displayName;
+            var ref = firebase.database().ref('Users/' + UserID + '/Lists');
+            var listDiv = document.getElementById('listUsedSelection');
+            ref.on('value', function (snap) {
+              while (listDiv.firstChild) {
+                listDiv.removeChild(listDiv.firstChild);
+              }
+              snap.forEach(function (data) {
+                var option = document.createElement('OPTION');
+                option.selected = true;
+                option.innerHTML = data.key;
+                option.id = data.key;
+                listDiv.appendChild(option);
+              });
+              addNewTweets(listDiv.value);
+            });
+            //console.log(listDiv.value);
+            //addNewTweets(listDiv.value);
+          // User is signed in.
+          document.getElementById('signInContent').style.display = "none";
+          document.getElementById('moreItem').style.display = "block";
+          document.getElementById('newTweetDiv').style.display = "block";
+          document.getElementById('refreshItem').style.display = "block";
+          //document.getElementById('tweets').style.display = "block";
+          //document.getElementById('notweets').style.display = "block";
+          // [START_EXCLUDE]
+          // [END_EXCLUDE]
+        } else {
+          // User is signed out.
+          // [START_EXCLUDE]
+            document.getElementById('signInContent').style.display = "block";
+            document.getElementById('moreItem').style.display = "none";
+            document.getElementById('newTweetDiv').style.display = "none";
+            document.getElementById('refreshItem').style.display = "none";
+            document.getElementById('tweets').style.display = "none";
+            document.getElementById('notweets').style.display = "none";
+          // [START_EXCLUDE]
+          // [END_EXCLUDE]
+        }
+        // [START_EXCLUDE silent]
+        document.getElementById('sign-in-twitter').disabled = false;
+        // [END_EXCLUDE]
+      });
+      // [END authstatelistener]
+      document.getElementById('newTweets').addEventListener('click', getNewTweets, false);
+      document.getElementById('sign-in-twitter').addEventListener('click', toggleTwitterSignIn, false);
+      document.getElementById('signOutButton').addEventListener('click', toggleTwitterSignIn, false);
+      document.getElementById('deleteAllTweets').addEventListener('click', deleteAllTweets, false);
+      document.getElementById('refreshItem').addEventListener('click', refreshSearch, false);
+      document.getElementById('listUsedSelection').addEventListener('change', selectionChange, false);
+    }
+    window.onload = function() {
+      initApp();
+    };
+    /*
+    loadingFunction(){
+        myVar = setTimeout(showPage, 3000);
+    }
+      
+    showPage(){
+        
+    }
+      */
+  </script>
+
   </head>
 
   <body>
@@ -58,9 +343,28 @@
         </tbody>
       </table>
           </div>
+<<<<<<< Updated upstream
     <!-- Bootstrap core JavaScript -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+=======
+
+          <script src="https://www.gstatic.com/firebasejs/4.5.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDEpkWi9WgBaxo7B2l32TthAdyv8LUgHCk",
+    authDomain: "codeforchange-jpm.firebaseapp.com",
+    databaseURL: "https://codeforchange-jpm.firebaseio.com",
+    projectId: "codeforchange-jpm",
+    storageBucket: "codeforchange-jpm.appspot.com",
+    messagingSenderId: "876163259798"
+  };
+  firebase.initializeApp(config);
+</script>
+              <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+>>>>>>> Stashed changes
     <script src="vendor/popper/popper.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
