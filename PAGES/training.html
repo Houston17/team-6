@@ -1,5 +1,7 @@
-<html>
-    <head>
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,11 +19,9 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="CSS/freelancer.css" rel="stylesheet">
 
-      <link href="CSS/freelancer.css" rel="stylesheet">
-
-  <script type="text/javascript">
+    <script>
       function toggleSignIn() {
       if (firebase.auth().currentUser) {
         // [START signout]
@@ -183,14 +183,13 @@
     };
 
 
-  </script>
+    </script>
 
   </head>
 
-  <body>
+  <body id="page-top">
 
-
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
           <div class="container">
             <a class="navbar-brand js-scroll-trigger" href="#page-top">SEARCH</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -211,8 +210,8 @@
                 <li class="nav-item dropdown" style="display: none" id="signedINUser">
                   <a class="nav-link dropdown-toggle" href="http://example.com" id="userdropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Username</a>
                   <div class="dropdown-menu" aria-labelledby="dropdown01">
-                    <a class="dropdown-item" href="#">Profile</a>
-                    <a class="dropdown-item" href="#">Directory</a>
+                    <a class="dropdown-item" href="PAGES/training.html">Training</a>
+                    <a class="dropdown-item" href="PAGES/directory.html">Directory</a>
                     <a class="dropdown-item" href="#" id="signOutButton">Sign Out</a>
                   </div>
                 </li>
@@ -221,56 +220,10 @@
           </div>
         </nav> 
 
-  <div class="container">
-    <div class="container" id="eventForm" style="display: none">
-      <input id="eventName" class="form-control" placeholder="Event Name" required>
-      <input id="eventDate" class="form-control" placeholder="Event Date" required>
-      <input id="eventTime" class="form-control" placeholder="Event Time" required>
-      <input id="eventLocation" class="form-control" placeholder="Event Location" required>
-      <button class="btn btn-outline-success my-2 my-sm-0" id="submitEvents" type="submit">Submit</button>      
-    </div>  
-  </div>
 
 
 
-  <div class="table-responsive">
-    <table class="table table-striped" id="table">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Date</th>
-          <th>Time</th>
-          <th>Location</th>
-          </tr>
-        </thead>
-        <tbody> 
-        </tbody>
-      </table>
-          </div>
-
-
-          <button class="btn btn-outline-success my-2 my-sm-0 joinBtn" id="addEvents" type="submit">Add Event</button>
-            
-      <div class="container">
-
-          <button class="btn btn-outline-success my-2 my-sm-0 joinBtn" id="addEvents" type="submit">Add Event</button>  
-      
-          <div class="container">
-
-          <div class="container" id="eventForm" style="display: none">
-            <input id="eventName" class="form-control" placeholder="Event Name" required>
-            <input id="eventDate" class="form-control" placeholder="Event Date" required>
-            <input id="eventTime" class="form-control" placeholder="Event Time" required>
-            <input id="eventLocation" class="form-control" placeholder="Event Location" required>
-            <button class="btn btn-outline-success my-2 my-sm-0" id="submitEvents" type="submit">Submit</button>      
-          </div>  
-        </div>
-
-
-          <button class="btn btn-outline-success my-2 my-sm-0 joinBtn" id="addEvents" type="submit">Add Event</button>  
-
-
-                      <!-- Footer -->
+            <!-- Footer -->
     <footer class="text-center">
       <div class="footer-above">
         <div class="container">
@@ -331,7 +284,7 @@
 
 
 
-        <div id="myModal" class="modal fade" role="dialog" style="background: white; width: auto;">
+    <div id="myModal" class="modal fade" role="dialog" style="background: white; width: auto;">
         <div id="close" style="position: absolute; left: 50px;">
           <a style="font-size: 50px;" href="">X</a>
         </div>
@@ -372,29 +325,22 @@
     </div>
 
 
+    <script src="https://www.gstatic.com/firebasejs/4.5.1/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDEpkWi9WgBaxo7B2l32TthAdyv8LUgHCk",
+        authDomain: "codeforchange-jpm.firebaseapp.com",
+        databaseURL: "https://codeforchange-jpm.firebaseio.com",
+        projectId: "codeforchange-jpm",
+        storageBucket: "codeforchange-jpm.appspot.com",
+        messagingSenderId: "876163259798"
+      };
+      firebase.initializeApp(config);
+    </script>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-
-
-
-
-          <script src="https://www.gstatic.com/firebasejs/4.5.1/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyDEpkWi9WgBaxo7B2l32TthAdyv8LUgHCk",
-    authDomain: "codeforchange-jpm.firebaseapp.com",
-    databaseURL: "https://codeforchange-jpm.firebaseio.com",
-    projectId: "codeforchange-jpm",
-    storageBucket: "codeforchange-jpm.appspot.com",
-    messagingSenderId: "876163259798"
-  };
-  firebase.initializeApp(config);
-</script>
-    <!-- Bootstrap core JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/popper/popper.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
@@ -406,7 +352,8 @@
     <script src="js/contact_me.js"></script>
 
     <!-- Custom scripts for this template -->
-    <script src="../JS/events.js"></script>
     <script src="JS/freelancer.js"></script>
-    </body>
+
+  </body>
+
 </html>
