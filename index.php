@@ -25,7 +25,7 @@
 
   <body id="page-top">
 
-      <?php include 'header.html';?>
+      <?php include 'PAGES/header.html';?>
 
     <!-- Header -->
     <header class="masthead">
@@ -180,7 +180,7 @@
       </div>
     </section>
 
-    <?php include 'footer.html';?>
+    <?php include 'PAGES/footer.html';?>
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
     <div class="scroll-top d-lg-none">
