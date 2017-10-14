@@ -1,0 +1,134 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<head>
+    <title>Welcome to Search</title>
+        <meta content="text/html; charset=gb2312" http-equiv="Content-Type" />
+
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="SlideTrans.js"></script>
+</head>
+
+
+<style>
+body{
+	background-color:#181818 ;
+}
+</style>
+
+
+<body>
+
+
+<style>
+navbar navbar-inverse{
+	background-color:#000000 ;
+}
+</style>
+
+<nav class="navbar navbar-inverse" >
+<span style="color: green">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">LOGO</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+     
+      <ul class="nav navbar-nav navbar-right">
+        
+ <li class="active"><a href="frontpage.html">Hello, welcome to Search!</a></li>
+
+	<li><a href="register.html"><span class="glyphicon glyphicon-user"></span> register</a></li>
+        <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> login</a></li>
+        <li><a href="English.html"><span class="glyphicon glyphicon-log-on"></span> English</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
+<div class= "row">
+ <div class= "col-md-1">
+ </div> 
+ 
+ <div class= "col-md-10">
+
+ <div class="btn-group-justified">
+  <a href="Events.html" class="btn btn-primary">Events</a>
+  <a href="TrainingA.html" class="btn btn-primary">Training</a>  
+  <a href="selfserviceA.html" class="btn btn-primary">selfservice</a>
+  <a href="contactus.html" class="btn btn-primary">contact us</a>	
+
+</div>
+
+
+
+ 
+<script language =javascript >
+var curIndex=0;
+var timeInterval=5000;
+var arr=new Array();
+arr[0]="http://www.searchhomeless.org/wp-content/uploads/2013/10/search-promo-educate-20131008.jpg";
+arr[1]="https://centrestage.org/sites/default/files//volunteer_final.png";
+arr[2]="http://folkmoot.org/wp-content/uploads/volunteer-make-a-difference.jpg";
+arr[3]="http://cdn.firespring.com/images/82699960-5a4e-4175-addf-6ee27bbd5117.jpg";
+arr[4]=http://www.searchhomeless.org/images/page-headers/search-page-header-events-lunch.png
+setInterval(changeImg,timeInterval);
+function changeImg()
+{
+    var obj=document.getElementById("obj");
+    if (curIndex==arr.length-1) 
+    {
+        curIndex=0;
+    }
+    else
+    {
+        curIndex+=1;
+    }
+    obj.src=arr[curIndex];
+}
+</script>
+<img id=obj src ="http://www.searchhomeless.org/wp-content/uploads/2013/10/search-promo-educate-20131008.jpg" width=1276 height=450 border =50>
+
+
+<div class="container-fluid" style="background-color: white">
+ <a href="#">
+  <img src="http://www.bjcsf.com/Templets/Images/2012-index/logo.gif" alt="超市发 Icon" style="background-color: white;    width:100px;height:50px;margin:10px">
+ </a>
+ <a href="#">
+  <img src="http://www.jkl.com.cn/cn/images/logo.jpg" alt="京客隆 Icon" style="background-color: white;    width:100px;height:50px;margin:10px">
+ </a>
+ <a href="#">
+  <img src="html5.gif" alt="HTML5 Icon" style="background-color: white; width:100px;height:50px;margin:10px">
+ </a>
+ <a href="#">
+  <img src="html5.gif" alt="HTML5 Icon" style="background-color: white; width:100px;height:50px;margin:10px">
+ </a>
+ <a href="#">
+  <img src="html5.gif" alt="HTML5 Icon" style="background-color: white; width:100px;height:50px;margin:10px">
+ </a>
+ <a href="#">
+  <img src="html5.gif" alt="HTML5 Icon" style="background-color: white; width:100px;height:50px;margin:10px">
+ </a>
+ <a href="#">
+  <img src="html5.gif" alt="HTML5 Icon" style="background-color: white; width:100px;height:50px;margin:10px">
+ </a>
+</div>
+
+</div>
+
+ <div class= "col-md-1">
+ </div> 
+
+</body>
+</html>

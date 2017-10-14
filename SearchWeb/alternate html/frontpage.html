@@ -1,0 +1,150 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<head>
+    <title>欢迎访问北京北方亚大贸易有限公司网站</title>
+        <meta content="text/html; charset=gb2312" http-equiv="Content-Type" />
+
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="SlideTrans.js"></script>
+</head>
+
+
+<style>
+body{
+	background-color:#181818 ;
+}
+</style>
+
+
+<body>
+
+
+<style>
+navbar navbar-inverse{
+	background-color:#000000 ;
+}
+</style>
+
+<nav class="navbar navbar-inverse" >
+<span style="color: green">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">LOGO</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+     
+      <ul class="nav navbar-nav navbar-right">
+        
+ <li class="active"><a href="frontpage.html">您好，欢迎来到北方亚大</a></li>
+
+	<li><a href="注册.html"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
+        <li><a href="登陆.html"><span class="glyphicon glyphicon-log-in"></span> 登陆</a></li>
+        <li><a href="English.html"><span class="glyphicon glyphicon-log-on"></span> English</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
+<div class= "row">
+ <div class= "col-md-1">
+ </div> 
+ 
+ <div class= "col-md-10">
+
+ <div class="btn-group">
+  <a href="关于亚大.html" class="btn btn-primary">关于亚大</a>
+  
+ <div class="btn-group">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+	合作伙伴<span class="caret"></span></button>
+      <ul class="dropdown-menu pull-left" role="menu">
+        <li><a href="合作伙伴A.html">A</a></li>
+        <li><a href="合作伙伴B.html">B</a></li>
+      </ul>
+ <div class="btn-group">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+	产品介绍     <span class="caret"></span></button>
+      <ul class="dropdown-menu pull-right" role="menu">
+        <li><a href="产品介绍A.html">A</a></li>
+        <li><a href="产品介绍B.html">B</a></li>
+      </ul>
+ <div class="btn-group">
+  <a href="联系我们.html" class="btn btn-primary">联系我们</a>	
+</div>
+</div>
+</div>
+</div>
+
+
+ 
+<script language =javascript >
+var curIndex=0;
+//时间间隔(单位毫秒)，每秒钟显示一张，数组共有5张图片放在Photos文件夹下。
+var timeInterval=5000;
+var arr=new Array();
+arr[0]="http://b.hiphotos.baidu.com/image/pic/item/b812c8fcc3cec3fd050b5cb5d288d43f8794273d.jpg";
+arr[1]="http://b.hiphotos.baidu.com/image/pic/item/c8177f3e6709c93d915ce2289b3df8dcd0005447.jpg";
+arr[2]="http://c.hiphotos.baidu.com/image/h%3D200/sign=f6b09bc53e292df588c3ab158c305ce2/d788d43f8794a4c21f40b9c10af41bd5ac6e39fc.jpg";
+arr[3]="photos/4.jpg";
+arr[4]="photos/5.jpg";
+setInterval(changeImg,timeInterval);
+function changeImg()
+{
+    var obj=document.getElementById("obj");
+    if (curIndex==arr.length-1) 
+    {
+        curIndex=0;
+    }
+    else
+    {
+        curIndex+=1;
+    }
+    obj.src=arr[curIndex];
+}
+</script>
+<img id=obj src ="photos/1.jpg" width=1100 height=450 border =50>
+
+
+<div class="container-fluid" style="background-color: white">
+ <a href="#">
+  <img src="http://www.bjcsf.com/Templets/Images/2012-index/logo.gif" alt="超市发 Icon" style="background-color: white;    width:100px;height:50px;margin:10px">
+ </a>
+ <a href="#">
+  <img src="http://www.jkl.com.cn/cn/images/logo.jpg" alt="京客隆 Icon" style="background-color: white;    width:100px;height:50px;margin:10px">
+ </a>
+ <a href="#">
+  <img src="html5.gif" alt="HTML5 Icon" style="background-color: white; width:100px;height:50px;margin:10px">
+ </a>
+ <a href="#">
+  <img src="html5.gif" alt="HTML5 Icon" style="background-color: white; width:100px;height:50px;margin:10px">
+ </a>
+ <a href="#">
+  <img src="html5.gif" alt="HTML5 Icon" style="background-color: white; width:100px;height:50px;margin:10px">
+ </a>
+ <a href="#">
+  <img src="html5.gif" alt="HTML5 Icon" style="background-color: white; width:100px;height:50px;margin:10px">
+ </a>
+ <a href="#">
+  <img src="html5.gif" alt="HTML5 Icon" style="background-color: white; width:100px;height:50px;margin:10px">
+ </a>
+</div>
+
+</div>
+
+ <div class= "col-md-1">
+ </div> 
+
+</body>
+</html>
