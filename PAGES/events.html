@@ -31,7 +31,6 @@
         // [END signout]
       } else {
         var email = document.getElementById('email').value;
-        console.log(email);
         var password = document.getElementById('password').value;
         if (email.length < 4) {
           alert('Please enter an email address.');
@@ -53,7 +52,6 @@
           } else {
             alert(errorMessage);
           }
-          console.log(error);
           document.getElementById('quickstart-sign-in').disabled = false;
           // [END_EXCLUDE]
         });
@@ -88,7 +86,6 @@
         } else {
           alert(errorMessage);
         }
-        console.log(error);
         // [END_EXCLUDE]
       });
       // [END createwithemail]
@@ -124,7 +121,6 @@
         } else if (errorCode == 'auth/user-not-found') {
           alert(errorMessage);
         }
-        console.log(error);
         // [END_EXCLUDE]
       });
       // [END sendpasswordemail];
@@ -223,34 +219,22 @@
           </div>
         </nav> 
 
-  <div class="container">
-    <div class="container" id="eventForm" style="display: none">
-      <input id="eventName" class="form-control" placeholder="Event Name" required>
-      <input id="eventDate" class="form-control" placeholder="Event Date" required>
-      <input id="eventTime" class="form-control" placeholder="Event Time" required>
-      <input id="eventLocation" class="form-control" placeholder="Event Location" required>
-      <button class="btn btn-outline-success my-2 my-sm-0" id="submitEvents" type="submit">Submit</button>      
-    </div>  
-  </div>
+    <div class="table-responsive">
+      <table class="table table-striped" id="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Location</th>
+            </tr>
+          </thead>
+          <tbody> 
+          </tbody>
+        </table>
+            </div>
 
-
-
-  <div class="table-responsive">
-    <table class="table table-striped" id="table">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Date</th>
-          <th>Time</th>
-          <th>Location</th>
-          </tr>
-        </thead>
-        <tbody> 
-        </tbody>
-      </table>
-          </div>
-
-
+      <div class="container">
           <div class="container" id="eventForm" style="display: none">
             <input id="eventName" class="form-control" placeholder="Event Name" required>
             <input id="eventDate" class="form-control" placeholder="Event Date" required>
@@ -259,6 +243,7 @@
             <button class="btn btn-outline-success my-2 my-sm-0" id="submitEvents" type="submit">Submit</button>      
           </div>  
         </div>
+
           <button class="btn btn-outline-success my-2 my-sm-0 joinBtn" id="addEvents" type="submit">Add Event</button>  
                       <!-- Footer -->
     <footer class="text-center">
