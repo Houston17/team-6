@@ -25,7 +25,7 @@
 
   <?php include 'header.html';?>
 
-  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add</button>
+  <button class="btn btn-outline-success my-2 my-sm-0" id="addEvents" type="submit">Add</button>
   <div class="table-responsive">
     <table class="table table-striped">
       <thead>
