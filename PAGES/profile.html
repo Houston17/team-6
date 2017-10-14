@@ -22,7 +22,7 @@
     <link href="CSS/freelancer.css" rel="stylesheet">
 
     <script>
-      firebase.auth().onAuthStateChanged(function(user) {
+          firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
           document.getElementById('signedINUser').style.display = "block";
           document.getElementById('signInButton').style.display = "none";
@@ -31,6 +31,16 @@
           // No user is signed in.
         }
       });
+        var user = firebase.auth().currentUser;
+        document.getElementById('email').innerHTML = user.email;
+        var ref = firebase.database().ref('Users/' + user.uid);
+        ref.on("value", function (snap) {
+            document.getElementById('name').innerHTML = snap.val().Name;
+            document.getElementById('address').innerHTML = snap.val().Address;
+            document.getElementById('city').innerHTML = snap.val().City;
+            document.getElementById('zip').innerHTML = snap.val().Zip;
+            document.getElementById('phone').innerHTML = snap.val().Phone;
+        });
     </script>
 
   </head>
