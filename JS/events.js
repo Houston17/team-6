@@ -47,6 +47,7 @@ $(document).ready(function(){
             <td>" + eventDate + "</td>\
             <td>" + eventTime + "</td>\
             <td>" + eventLocation + "</td>\
+            <td><button class='btn btn-outline-success my-2 my-sm-0 joinBtn'>Join Event</button></td>\
             </tr>"
 
         $("#table").append(tr);

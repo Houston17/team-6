@@ -1,24 +1,19 @@
 $(document).ready(function(){
 
-
     $('#submitUser').click(function() {
         console.log("Hi");
         var name = $('#name').val();
         var email = $('#email').val();
         var password = $('#password').val();
-
-        var tr = "<tr>\
-                    <td>" + name + "</td>\
-                    <td>" + email + "</td>\
-                    <td>" + password + "</td>\
-                  </tr>"
         
-        $("#table").append(tr);
-        
-        $('#eventForm').hide();
-        $('#addEvents').show();
         console.log(name + email + password);
-		firebase.auth().createUserWithEmailAndPassword(email, password).catch
+		firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+            // Handle Errors here.
+            console.log("idk");
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // ...
+        });
     })
 
     function writeUserData(userId, name, email) {
