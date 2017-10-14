@@ -11,7 +11,6 @@ $(document).ready(function(){
     });
     
     $('#addEvents').click(function (){
-        console.log("sup");
         $('#eventForm').show();
         $('#addEvents').hide();
 
@@ -22,8 +21,8 @@ $(document).ready(function(){
 
     })
     
-    function writeRows(eventName, eventEmail, eventPhone, eventZip){
-        var tr = '<tr>\
+    function writeRows(eventName, eventEmail, eventPhone, eventZip, eventUID){
+        var tr = '<tr id='+eventUID+'>\
             <td>' + eventName + '</td>\
             <td>' + eventEmail + '</td>\
             <td>' + eventPhone + '</td>\
@@ -54,7 +53,6 @@ $(document).ready(function(){
     }
 
     function writeNewPost(title, date, time, location) {
-        // A post entry.
         var postData = {
           Name: title,
           Date: date,
@@ -63,10 +61,8 @@ $(document).ready(function(){
 
         };
       
-        // Get a key for a new Post.
         var newPostKey = firebase.database().ref().child('Events').push().key;
       
-        // Write the new post's data simultaneously in the posts list and the user's post list.
         var updates = {};
         updates['Events/' + title] = postData;
       
