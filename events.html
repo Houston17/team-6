@@ -31,7 +31,6 @@
         // [END signout]
       } else {
         var email = document.getElementById('email').value;
-        console.log(email);
         var password = document.getElementById('password').value;
         if (email.length < 4) {
           alert('Please enter an email address.');
@@ -53,7 +52,6 @@
           } else {
             alert(errorMessage);
           }
-          console.log(error);
           document.getElementById('quickstart-sign-in').disabled = false;
           // [END_EXCLUDE]
         });
@@ -88,7 +86,6 @@
         } else {
           alert(errorMessage);
         }
-        console.log(error);
         // [END_EXCLUDE]
       });
       // [END createwithemail]
@@ -124,7 +121,6 @@
         } else if (errorCode == 'auth/user-not-found') {
           alert(errorMessage);
         }
-        console.log(error);
         // [END_EXCLUDE]
       });
       // [END sendpasswordemail];
@@ -222,6 +218,7 @@
             </div>
           </div>
         </nav> 
+<<<<<<< HEAD:events.html
 <section>
   <div class="container">
     <div class="container" id="eventForm" style="display: none">
@@ -250,7 +247,25 @@
       </table>
           </div>
 </section>
+=======
 
+    <div class="table-responsive">
+      <table class="table table-striped" id="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Location</th>
+            </tr>
+          </thead>
+          <tbody> 
+          </tbody>
+        </table>
+            </div>
+>>>>>>> origin/master:PAGES/events.html
+
+      <div class="container">
           <div class="container" id="eventForm" style="display: none">
             <input id="eventName" class="form-control" placeholder="Event Name" required>
             <input id="eventDate" class="form-control" placeholder="Event Date" required>
@@ -260,10 +275,7 @@
           </div>  
         </div>
 
-
           <button class="btn btn-outline-success my-2 my-sm-0 joinBtn" id="addEvents" type="submit">Add Event</button>  
-
-
                       <!-- Footer -->
     <footer class="text-center">
       <div class="footer-above">
@@ -305,9 +317,8 @@
               </ul>
             </div>
             <div class="footer-col col-md-4">
-              <h3>About Freelancer</h3>
-              <p>Freelance is a free to use, open source Bootstrap theme created by
-                <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
+              <h3>About Search</h3>
+              <p>Services works to engage, stabilize, educate, employ and house individuals and families who are homeless in the Houston, Texas area.</p>
             </div>
           </div>
         </div>
