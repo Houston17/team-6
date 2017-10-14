@@ -139,6 +139,7 @@
         // [END_EXCLUDE]
         if (user) {
           // User is signed in.
+          document.getElementById("userdropdown").innerHTML = user.email;
           var displayName = user.displayName;
           var email = user.email;
           var emailVerified = user.emailVerified;
