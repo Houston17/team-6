@@ -1,6 +1,6 @@
 $(document).ready(function(){
     console.log("...")
-
+    index = 0;
         console.log("oh fuck");
         var starCountRef = firebase.database().ref('Events');
         starCountRef.once('value', function(snapshot) {
@@ -11,8 +11,6 @@ $(document).ready(function(){
             writeRows(dataArray.Name, dataArray.Date, dataArray.Time, dataArray.Location);
           })
         });
-
-        
     
     $('#addEvents').click(function (){
         console.log("sup");
@@ -41,17 +39,32 @@ $(document).ready(function(){
         location.reload();
     })
 
+    
     function writeRows(eventName, eventDate, eventTime, eventLocation){
-        var tr = "<tr>\
-            <td>" + eventName + "</td>\
-            <td>" + eventDate + "</td>\
-            <td>" + eventTime + "</td>\
-            <td>" + eventLocation + "</td>\
-            <td><button class='btn btn-outline-success my-2 my-sm-0 joinBtn'>Join Event</button></td>\
-            </tr>"
+        var tr = '<tr>\
+            <td>' + eventName + '</td>\
+            <td>' + eventDate + '</td>\
+            <td>' + eventTime + '</td>\
+            <td>' + eventLocation + '</td>\
+            <td><button class="btn btn-outline-success my-2 my-sm-0 joinBtn" id=joinBtn'+index+'>Join Event</button></td>\
+            </tr>'
 
         $("#table").append(tr);
+        
+        $("#joinBtn"+index).click(function () {
+            console.log("wheeeeeeee");
+            var user = firebase.auth().currentUser;
+
+            if (user){
+                console.log("user exists");
+            } else {
+                window.location.href("../PAGES/signIn.html");
+            }
+    })
+        index +=1;
     }
+
+    
 
     function writeUserData(userId, name, email) {
         firebase.database().ref('Users/' + userId).set({
