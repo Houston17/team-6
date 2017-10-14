@@ -22,6 +22,11 @@
     <link href="CSS/freelancer.css" rel="stylesheet">
 
     <script>
+      function toggleSignUp(){
+        document.getElementById('signin').style.display = "none";
+        document.getElementById('signup').style.display = "block";
+      }
+
       function toggleSignIn() {
       if (firebase.auth().currentUser) {
         // [START signout]
@@ -134,6 +139,8 @@
     function initApp() {
       // Listening for auth state changes.
       // [START authstatelistener]
+      toggleSignIn
+
       firebase.auth().onAuthStateChanged(function(user) {
         // [START_EXCLUDE silent]
         document.getElementById('quickstart-verify-email').disabled = true;
@@ -173,6 +180,7 @@
       document.getElementById('quickstart-sign-up').addEventListener('click', handleSignUp, false);
       document.getElementById('quickstart-verify-email').addEventListener('click', sendEmailVerification, false);
       document.getElementById('quickstart-password-reset').addEventListener('click', sendPasswordReset, false);
+      document.getElementById('quickstart-sign-up2').addEventListener('click', toggleSignUp, true);
     }
     window.onload = function() {
       initApp();
@@ -757,10 +765,11 @@
           <input class="mdl-textfield__input" style="display:inline;width:auto;" type="text" id="newcity" name="newcity" placeholder="City"/>
           <br/><br/>
           <input class="mdl-textfield__input" style="display:inline;width:auto;" type="number" id="zip" name="zip" placeholder="Zip"/>
-          </div>
-          <button disabled class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-sign-in" name="signin">Sign In</button>
           <br/><br/>
-          <a id="quickstart-sign-up" name="signup">Sign Up</button>
+          <button class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-sign-up" name="signup">Sign Up</button>
+          </div>
+          <br/><br/>
+          <a id="quickstart-sign-up2" name="signup">Sign Up</a>
           &nbsp;&nbsp;&nbsp;
           <button class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-password-reset" name="verify-email">Send Password Reset Email</button>
 
