@@ -53,6 +53,8 @@ $(document).ready(function(){
 
             if (user){
                 console.log("user exists");
+                $(this).hide();
+                window.alert("You have been signed up for " + eventName + " !");
             } else {
                 $(this).hide();
                 window.alert("You have been signed up for " + eventName + " !");
