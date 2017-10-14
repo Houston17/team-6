@@ -11,7 +11,7 @@
      $city = $_POST['city'];
      $state = $_POST['state'];
      $zip = $_POST['zip'];
-     $query = "INSERT INTO Htown (fname, email, address, city, state, zip, password) VALUES ('$name','$email','$address','$city', '$state', '$zip', '$password')"; 
+     $query = "INSERT INTO Htown (name, email, address, city, state, zip, password) VALUES ('$name','$email','$address','$city', '$state', '$zip', '$password')"; 
      $data = mysql_query ($query)or die(mysql_error()); 
      if($data) { echo "YOUR REGISTRATION IS COMPLETED..."; }
    }
