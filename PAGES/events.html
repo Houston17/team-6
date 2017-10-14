@@ -188,6 +188,8 @@
 
   <body>
 
+  
+
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
           <div class="container">
             <a class="navbar-brand js-scroll-trigger" href="#page-top">SEARCH</a>
@@ -229,6 +231,7 @@
     </div>  
   </div>
 
+
   <div class="table-responsive">
     <table class="table table-striped" id="table">
       <thead>
@@ -243,6 +246,19 @@
         </tbody>
       </table>
           </div>
+
+          <button class="btn btn-outline-success my-2 my-sm-0 joinBtn" id="addEvents" type="submit">Add Event</button>
+            
+      <div class="container">
+          <div class="container" id="eventForm" style="display: none">
+            <input id="eventName" class="form-control" placeholder="Event Name" required>
+            <input id="eventDate" class="form-control" placeholder="Event Date" required>
+            <input id="eventTime" class="form-control" placeholder="Event Time" required>
+            <input id="eventLocation" class="form-control" placeholder="Event Location" required>
+            <button class="btn btn-outline-success my-2 my-sm-0" id="submitEvents" type="submit">Submit</button>      
+          </div>  
+        </div>
+
           <button class="btn btn-outline-success my-2 my-sm-0 joinBtn" id="addEvents" type="submit">Add Event</button>  
 
                       <!-- Footer -->
@@ -304,6 +320,7 @@
       </div>
     </footer>
 
+
         <div id="myModal" class="modal fade" role="dialog" style="background: white; width: auto;">
         <div id="close" style="position: absolute; left: 50px;">
           <a style="font-size: 50px;" href="">X</a>
@@ -343,6 +360,7 @@
     </div>
             </div>
     </div>
+
 
     <!-- Bootstrap core JavaScript -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

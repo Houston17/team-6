@@ -1,7 +1,6 @@
 $(document).ready(function(){
     console.log("...")
     index = 0;
-        console.log("oh fuck");
         var starCountRef = firebase.database().ref('Events');
         starCountRef.once('value', function(snapshot) {
           snapshot.forEach(function (data){
@@ -13,7 +12,6 @@ $(document).ready(function(){
         });
     
     $('#addEvents').click(function (){
-        console.log("sup");
         $('#eventForm').show();
         $('#addEvents').hide();
 
@@ -26,7 +24,6 @@ $(document).ready(function(){
     })
 
     $('#submitEvents').click(function() {
-        console.log("Hi");
         var eventName = $('#eventName').val();
         var eventDate = $('#eventDate').val();
         var eventTime = $('#eventTime').val();
@@ -52,13 +49,13 @@ $(document).ready(function(){
         $("#table").append(tr);
         
         $("#joinBtn"+index).click(function () {
-            console.log("wheeeeeeee");
             var user = firebase.auth().currentUser;
 
             if (user){
                 console.log("user exists");
             } else {
-                window.location.href("../PAGES/signIn.html");
+                $(this).hide();
+                window.alert("You have been signed up for " + eventName + " !");
             }
     })
         index +=1;
