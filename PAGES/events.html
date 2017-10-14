@@ -32,40 +32,30 @@
 
   <?php include 'header.html';?>
   <div class="container">
-    <button class="btn btn-outline-success my-2 my-sm-0" id="addEvents" type="submit">Add Event</button>
     <div class="container" id="eventForm" style="display: none">
       <input id="eventName" class="form-control" placeholder="Event Name" required>
       <input id="eventDate" class="form-control" placeholder="Event Date" required>
       <input id="eventTime" class="form-control" placeholder="Event Time" required>
       <input id="eventLocation" class="form-control" placeholder="Event Location" required>
       <button class="btn btn-outline-success my-2 my-sm-0" id="submitEvents" type="submit">Submit</button>      
-    </div>    
+    </div>  
   </div>
 
   <div class="table-responsive">
     <table class="table table-striped" id="table">
       <thead>
         <tr>
-        <th>#</th>
-          <th>Header</th>
-          <th>Header</th>
-          <th>Header</th>
-          <th>Header</th>
+          <th>Name</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Location</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-          <td>1,001</td>
-          <td>Lorem</td>
-          <td>ipsum</td>
-          <td>dolor</td>
-          <td>sit</td>
-          </tr>
-          
+        <tbody> 
         </tbody>
       </table>
           </div>
-
+          <button class="btn btn-outline-success my-2 my-sm-0" id="addEvents" type="submit">Add Event</button>  
 
     <!-- Bootstrap core JavaScript -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

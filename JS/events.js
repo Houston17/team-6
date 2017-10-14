@@ -1,15 +1,19 @@
 $(document).ready(function(){
+    console.log("...")
 
-    window.onload = function(){
         console.log("oh fuck");
-        var starCountRef = firebase.database().ref('Events/' + postId + '/starCount');
-        starCountRef.on('value', function(snapshot) {
-          snapshot.foreach(function (data){
-            updateStarCount(postElement, snapshot.val());
-            console.log(data.Name);
+        var starCountRef = firebase.database().ref('Events');
+        starCountRef.once('value', function(snapshot) {
+          snapshot.forEach(function (data){
+            console.log(data.val().Name);
+            var dataArray = data.val();
+            console.log(dataArray.Time);
+            writeRows(dataArray.Name, dataArray.Date, dataArray.Time, dataArray.Location);
           })
         });
-    }
+
+        
+    
     $('#addEvents').click(function (){
         console.log("sup");
         $('#eventForm').show();
@@ -29,16 +33,15 @@ $(document).ready(function(){
         var eventDate = $('#eventDate').val();
         var eventTime = $('#eventTime').val();
         var eventLocation = $('#eventLocation').val();
-
-        writeRows(eventName, eventDate, eventTime, eventLocation);
         
         $('#eventForm').hide();
         $('#addEvents').show();
         console.log(eventName + eventDate + eventTime + eventLocation);
         writeNewPost(eventName, eventDate, eventTime, eventLocation);
+        location.reload();
     })
 
-    function writeRows(eventName, eventDate, eventDate, eventLocation){
+    function writeRows(eventName, eventDate, eventTime, eventLocation){
         var tr = "<tr>\
             <td>" + eventName + "</td>\
             <td>" + eventDate + "</td>\
