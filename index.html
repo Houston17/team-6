@@ -21,6 +21,18 @@
     <!-- Custom styles for this template -->
     <link href="CSS/freelancer.css" rel="stylesheet">
 
+    <script>
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          document.getElementById('signedINUser').style.display = "block";
+          document.getElementById('signInButton').style.display = "none";
+          // User is signed in.
+        } else {
+          // No user is signed in.
+        }
+      });
+    </script>
+
   </head>
 
   <body id="page-top">
@@ -40,8 +52,16 @@
                 <li class="nav-item">
                   <a class="nav-link js-scroll-trigger" href="PAGES/testimonials.html">Testimonials</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" id="signInButton">
                   <a class="nav-link js-scroll-trigger" href="PAGES/signIn.html">Contact</a>
+                </li>
+                <li class="nav-item dropdown" style="display: none" id="signedINUser">
+                  <a class="nav-link dropdown-toggle" href="http://example.com" id="userdropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Username</a>
+                  <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    <a class="dropdown-item" href="#">Profile</a>
+                    <a class="dropdown-item" href="#">Directory</a>
+                    <a class="dropdown-item" href="#">Sign Out</a>
+                  </div>
                 </li>
               </ul>
             </div>
@@ -60,34 +80,12 @@
       </div>
     </header>
 
-        <!-- About Section -->
-    <section class="success" id="about">
-      <div class="container">
-        <h2 class="text-center">About</h2>
-        <hr class="star-light">
-        <div class="row">
-          <div class="col-lg-4 ml-auto">
-            <p>SEARCH is a non-for profit based in Houston that works to help the homeless popualation</p>
-          </div>
-          <div class="col-lg-4 mr-auto">
-            <p>We rely on volunteers and charitable donations to help members of the homeless population on the road to independence.</p>
-          </div>
-          <div class="col-lg-8 mx-auto text-center">
-            <a href="#" class="btn btn-lg btn-outline">
-              <i class="fa fa-download"></i>
-              Download Theme
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!--Volunteer Section -->
     <div class="jumbotron">
       <div class="container">
         <h1 class="display-3">Volunteer of the Month</h1>
         <p>Lauren Smith</p>
-        <p>Lauren has ben an avid volunteer for three years now and has made a significant impact in our local community with many of our clients. We are very thankful for all of her work</p>
+        <p>Lauren has ben an avid volunteer for three years now and has made a significant impact in our local community with many of our clients. We are very thankful for all of her work, this month in particular she gave more than 50 hours of her time.</p>
         <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more >></a></p>
       </div>
     </div>
