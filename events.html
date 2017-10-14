@@ -20,8 +20,8 @@
 
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
- 
     
+        <link href="CSS/freelancer.css" rel="stylesheet">
 
   <script type="text/javascript">
       function toggleSignIn() {
@@ -192,7 +192,7 @@
   <body>
 
 
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
           <div class="container">
             <a class="navbar-brand js-scroll-trigger" href="#page-top">SEARCH</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -202,10 +202,10 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" href="PAGES/events.html">Events</a>
+                  <a class="nav-link js-scroll-trigger" href="events.html">Events</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" href="PAGES/testimonials.html">Testimonials</a>
+                  <a class="nav-link js-scroll-trigger" href="training.html">Training</a>
                 </li>
                 <li class="nav-item" id="signInButton">
                   <a class="nav-link js-scroll-trigger" href="#" data-toggle="modal" data-target="#myModal">Sign In</a>
@@ -213,8 +213,8 @@
                 <li class="nav-item dropdown" style="display: none" id="signedINUser">
                   <a class="nav-link dropdown-toggle" href="http://example.com" id="userdropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Username</a>
                   <div class="dropdown-menu" aria-labelledby="dropdown01">
-                    <a class="dropdown-item" href="#">Profile</a>
-                    <a class="dropdown-item" href="#">Directory</a>
+                    <a class="dropdown-item" href="training.html">Training</a>
+                    <a class="dropdown-item" href="directory.html">Directory</a>
                     <a class="dropdown-item" href="#" id="signOutButton">Sign Out</a>
                   </div>
                 </li>
@@ -222,7 +222,7 @@
             </div>
           </div>
         </nav> 
-
+<section>
   <div class="container">
     <div class="container" id="eventForm" style="display: none">
       <input id="eventName" class="form-control" placeholder="Event Name" required>
@@ -232,9 +232,9 @@
       <button class="btn btn-outline-success my-2 my-sm-0" id="submitEvents" type="submit">Submit</button>      
     </div>  
   </div>
+</section>
 
-
-
+<section>
   <div class="table-responsive">
     <table class="table table-striped" id="table">
       <thead>
@@ -249,7 +249,7 @@
         </tbody>
       </table>
           </div>
-
+</section>
 
           <div class="container" id="eventForm" style="display: none">
             <input id="eventName" class="form-control" placeholder="Event Name" required>
