@@ -40,6 +40,8 @@
             <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
             <label for="inputPassword" class="sr-only">Password</label>
             <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            <label for="inputPhone" class="sr-only">Phone</label>
+            <input type="tel" id="inputPhone" class="form-control" placeholder="Phone" required>
             <input type="password" id="inputPassword" class="form-control" placeholder="Confirm Password" required>
             <input type="address" id ="addressLine1" class="form-control" placeholder="Address Line 1">
             <input type="address" id ="city" class="form-control" placeholder="City">
