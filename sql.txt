@@ -1,0 +1,148 @@
+
+mysql> drop table a;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show COLUMNS FROM new;
++-------+------------+------+-----+---------+-------+
+| Field | Type       | Null | Key | Default | Extra |
++-------+------------+------+-----+---------+-------+
+| col1  | tinyint(4) | YES  |     | NULL    |       |
++-------+------------+------+-----+---------+-------+
+1 row in set (0.00 sec)
+
+mysql> exit
+Bye
+force@ip-172-31-57-252:~$ sudo mysql
+[sudo] password for force:
+Sorry, try again.
+[sudo] password for force:
+sudo: 1 incorrect password attempt
+force@ip-172-31-57-252:~$ mysql -u root -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 13
+Server version: 5.7.19-0ubuntu0.16.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show columns from volunteer;
+ERROR 1046 (3D000): No database selected
+mysql> use Htown
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show columns from volunteers;
+ERROR 1146 (42S02): Table 'Htown.volunteers' doesn't exist
+mysql> show columns from volunteer;
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| id        | int(11)     | NO   | PRI | NULL    | auto_increment |
+| fname     | varchar(30) | YES  |     | NULL    |                |
+| lname     | varchar(30) | YES  |     | NULL    |                |
+| email     | varchar(30) | YES  |     | NULL    |                |
+| address   | varchar(30) | YES  |     | NULL    |                |
+| city      | varchar(20) | YES  |     | NULL    |                |
+| state     | varchar(2)  | YES  |     | NULL    |                |
+| zip       | int(5)      | YES  |     | NULL    |                |
+| phone     | int(10)     | YES  |     | NULL    |                |
+| actfield1 | tinyint(4)  | YES  |     | NULL    |                |
+| actfield2 | tinyint(4)  | YES  |     | NULL    |                |
+| actfield3 | tinyint(4)  | YES  |     | NULL    |                |
+| actfield4 | tinyint(4)  | YES  |     | NULL    |                |
++-----------+-------------+------+-----+---------+----------------+
+13 rows in set (0.00 sec)
+
+mysql> CREATE TABLE USER_EVENT(user_Id int(11), event_Id(10));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(10))' at line 1
+mysql> CREATE TABLE USER_EVENT(user_Id int(11), event_Id int(10));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> show tables;
++-----------------+
+| Tables_in_Htown |
++-----------------+
+| USER_EVENT      |
+| events          |
+| new             |
+| volunteer       |
++-----------------+
+4 rows in set (0.00 sec)
+
+mysql> drop table events
+    -> ;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create table events(event_Id INT  AUTO_INCREMENT PRIMARY KEY, event_Name VARCHAR(100), event_Comments VARCHAR(100), event_date DATETIME, event_location VARCHAR(100));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> INSERT INTO events VALUES('party','party at abc',
+
+^C
+mysql> show columns from events;
++----------------+--------------+------+-----+---------+----------------+
+| Field          | Type         | Null | Key | Default | Extra          |
++----------------+--------------+------+-----+---------+----------------+
+| event_Id       | int(11)      | NO   | PRI | NULL    | auto_increment |
+| event_Name     | varchar(100) | YES  |     | NULL    |                |
+| event_Comments | varchar(100) | YES  |     | NULL    |                |
+| event_date     | datetime     | YES  |     | NULL    |                |
+| event_location | varchar(100) | YES  |     | NULL    |                |
++----------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> alter table events add address varchar(30);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> show columns from events;
++----------------+--------------+------+-----+---------+----------------+
+| Field          | Type         | Null | Key | Default | Extra          |
++----------------+--------------+------+-----+---------+----------------+
+| event_Id       | int(11)      | NO   | PRI | NULL    | auto_increment |
+| event_Name     | varchar(100) | YES  |     | NULL    |                |
+| event_Comments | varchar(100) | YES  |     | NULL    |                |
+| event_date     | datetime     | YES  |     | NULL    |                |
+| event_location | varchar(100) | YES  |     | NULL    |                |
+| address        | varchar(30)  | YES  |     | NULL    |                |
++----------------+--------------+------+-----+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> alter table events add city varchar(30);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table events (add city varchar(30);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(add city varchar(30)' at line 1
+mysql> alter table events add state varchar(30);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table events add zip int(5);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> show columns from events;
++----------------+--------------+------+-----+---------+----------------+
+| Field          | Type         | Null | Key | Default | Extra          |
++----------------+--------------+------+-----+---------+----------------+
+| event_Id       | int(11)      | NO   | PRI | NULL    | auto_increment |
+| event_Name     | varchar(100) | YES  |     | NULL    |                |
+| event_Comments | varchar(100) | YES  |     | NULL    |                |
+| event_date     | datetime     | YES  |     | NULL    |                |
+| event_location | varchar(100) | YES  |     | NULL    |                |
+| address        | varchar(30)  | YES  |     | NULL    |                |
+| city           | varchar(30)  | YES  |     | NULL    |                |
+| state          | varchar(30)  | YES  |     | NULL    |                |
+| zip            | int(5)       | YES  |     | NULL    |                |
++----------------+--------------+------+-----+---------+----------------+
+9 rows in set (0.00 sec)
+
+mysql> insert into events values('aaa','ss','20120618 10:34:09 AM');
