@@ -64,6 +64,7 @@
     function handleSignUp() {
       var email = document.getElementById('email').value;
       var password = document.getElementById('password').value;
+      var Name = document.getElementById('')
       if (email.length < 4) {
         alert('Please enter an email address.');
         return;
@@ -156,6 +157,8 @@
         } else {
           // User is signed out.
           // [START_EXCLUDE]
+          document.getElementById('signedINUser').style.display = "none";
+          document.getElementById('signInButton').style.display = "block";
           document.getElementById('quickstart-sign-in-status').textContent = 'Signed out';
           document.getElementById('quickstart-sign-in').textContent = 'Sign in';
           document.getElementById('quickstart-account-details').textContent = 'null';
@@ -197,16 +200,7 @@
                   <a class="nav-link js-scroll-trigger" href="PAGES/testimonials.html">Testimonials</a>
                 </li>
                 <li class="nav-item" id="signInButton">
-                  <a class="nav-link js-scroll-trigger" href="PAGES/signInpop.html" onclick="window.open(this.href,'targetWindow',
-                                   'toolbar=no,
-                                    location=no,
-                                    status=no,
-                                    menubar=no,
-                                    scrollbars=yes,
-                                    resizable=yes,
-                                    width=SomeSize,
-                                    height=SomeSize');
- return false;">Sign In</a>
+                  <a class="nav-link js-scroll-trigger" href="#" data-toggle="modal" data-target="#myModal">Sign In</a>
                 </li>
                 <li class="nav-item dropdown" style="display: none" id="signedINUser">
                   <a class="nav-link dropdown-toggle" href="http://example.com" id="userdropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Username</a>
@@ -729,38 +723,58 @@
       </div>
     </div>
 
-        <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
 
-      <!-- Container for the demo -->
-      <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop" style="display: none">
-        <div class="mdl-card__title mdl-color--light-blue-600 mdl-color-text--white">
-          <h2 class="mdl-card__title-text">Firebase Email &amp; Password Authentication</h2>
+          <div id="myModal" class="modal fade" role="dialog" style="background: white; width: auto;">
+                    <div id="close" style="position: absolute; left: 50px;">
+          <a style="font-size: 50px;" href="">X</a>
         </div>
-        <div class="mdl-card__supporting-text mdl-color-text--grey-600">
-          <p>Enter an email and password below and either sign in to an existing account or sign up</p>
-
+            <div class="modal-dialog">
+      <!-- Container for the demo -->
+      <div class="modal-header">
+          <h2 class="mdl-card__title-text">Login</h2>
+      </div>
+      <div class="modal-body">
+          <p>Enter an email and password below:</p>
+          <div id="signin">
           <input class="mdl-textfield__input" style="display:inline;width:auto;" type="text" id="email" name="email" placeholder="Email"/>
           &nbsp;&nbsp;&nbsp;
           <input class="mdl-textfield__input" style="display:inline;width:auto;" type="password" id="password" name="password" placeholder="Password"/>
           <br/><br/>
           <button disabled class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-sign-in" name="signin">Sign In</button>
+          </div>
+          <br/><br/>
+          <div id="signup" style="display: none;">
+            <input class="mdl-textfield__input" style="display:inline;width:auto;" type="text" id="newemail" name="newemail" placeholder="Email"/>
+          <br/><br/>
+          <input class="mdl-textfield__input" style="display:inline;width:auto;" type="password" id="newpassword" name="newpassword" placeholder="Password"/>
           &nbsp;&nbsp;&nbsp;
-          <button class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-sign-up" name="signup">Sign Up</button>
+          <input class="mdl-textfield__input" style="display:inline;width:auto;" type="password" id="newpassword2" name="newpassword2" placeholder="Password"/>
+          <br/><br/>
+          <input class="mdl-textfield__input" style="display:inline;width:auto;" type="tel" id="newphone" name="newphone" placeholder="Phone"/>
+          <br/><br/>
+          <input class="mdl-textfield__input" style="display:inline;width:auto;" type="text" id="newaddress" name="newaddress" placeholder="Address"/>
           &nbsp;&nbsp;&nbsp;
-          <button class="mdl-button mdl-js-button mdl-button--raised" disabled id="quickstart-verify-email" name="verify-email">Send Email Verification</button>
+          <input class="mdl-textfield__input" style="display:inline;width:auto;" type="text" id="newcity" name="newcity" placeholder="City"/>
+          <br/><br/>
+          <input class="mdl-textfield__input" style="display:inline;width:auto;" type="number" id="zip" name="zip" placeholder="Zip"/>
+          </div>
+          <button disabled class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-sign-in" name="signin">Sign In</button>
+          <br/><br/>
+          <a id="quickstart-sign-up" name="signup">Sign Up</button>
           &nbsp;&nbsp;&nbsp;
           <button class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-password-reset" name="verify-email">Send Password Reset Email</button>
 
           <!-- Container where we'll display the user details -->
+          <div class="modal-footer">
           <div class="quickstart-user-details-container">
             Firebase sign-in status: <span id="quickstart-sign-in-status">Unknown</span>
             <div>Firebase auth <code>currentUser</code> object value:</div>
             <pre><code id="quickstart-account-details">null</code></pre>
           </div>
+          </div>
         </div>
       </div>
-
-    </div>
+      </div>
 
     <script src="https://www.gstatic.com/firebasejs/4.5.1/firebase.js"></script>
     <script>
