@@ -1,23 +1,4 @@
 <!DOCTYPE html>
-<?php
-   include("config.php");
-   session_start();
-
-   function newUser() {
-     $name = $_POST['inputName']; 
-     $email = $_POST['inputEmail']; 
-     $password = $_POST['password']; 
-     $address = $_POST['address']; 
-     $city = $_POST['city'];
-     $state = $_POST['state'];
-     $zip = $_POST['zip'];
-     $query = "INSERT INTO Htown (name, email, address, city, state, zip, password) VALUES ('$name','$email','$address','$city', '$state', '$zip', '$password')"; 
-     $data = mysql_query ($query)or die(mysql_error()); 
-     if($data) { echo "YOUR REGISTRATION IS COMPLETED..."; }
-   }
-
-
-?>
 
 <html lang="en">
   <head>
