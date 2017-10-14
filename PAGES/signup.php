@@ -18,11 +18,11 @@
             <label for="inputPassword" class="sr-only">Password</label>
             <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
             <input type="password" id="inputPassword" class="form-control" placeholder="Confirm Password" required>
-            <input type="address" id ="inputAddress" class="form-control" placeholder="Address Line 1">
-            <input type="address" id ="inputAddress" class="form-control" placeholder="Address Line 2">
-            <input type="address" id ="inputAddress" class="form-control" placeholder="City">
-            <input type="address" id ="inputAddress" class="form-control" placeholder="State">
-            <input type="address" id ="inputAddress" class="form-control" placeholder="Zip Code">
+            <input type="address" id ="addressLine1" class="form-control" placeholder="Address Line 1">
+            <input type="address" id ="addressLine2" class="form-control" placeholder="Address Line 2">
+            <input type="address" id ="city" class="form-control" placeholder="City">
+            <input type="address" id ="state" class="form-control" placeholder="State">
+            <input type="address" id ="zip" class="form-control" placeholder="Zip Code">
             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up!</button>
         </form>    
     </div> <!-- /container -->
