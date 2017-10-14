@@ -1,5 +1,17 @@
 $(document).ready(function(){
-    $('#addEvents').click(function() {
+
+    $('#addEvents').click(function (){
+        console.log("sup");
+        $('#eventForm').show();
+        $('#addEvents').hide();
+
+        $('#eventName').val("");
+        $('#eventDate').val("");
+        $('#eventTime').val("");
+        $('#eventLocation').val("");
+    })
+
+    $('#submitEvents').click(function() {
         console.log("Hi");
         var eventName = $('#eventName').val();
         var eventDate = $('#eventDate').val();
@@ -14,7 +26,9 @@ $(document).ready(function(){
                   </tr>"
         
         $("#table").append(tr);
-
+        
+        $('#eventForm').hide();
+        $('#addEvents').show();
         console.log(eventName + eventDate + eventTime + eventLocation);
     })
 })
