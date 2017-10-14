@@ -1,4 +1,24 @@
 <!DOCTYPE html>
+<?php
+   include("config.php");
+   session_start();
+
+   function newUser() {
+     $name = $_POST['inputName']; 
+     $email = $_POST['inputEmail']; 
+     $password = $_POST['password']; 
+     $address = $_POST['address']; 
+     $city = $_POST['city'];
+     $state = $_POST['state'];
+     $zip = $_POST['zip'];
+     $query = "INSERT INTO Htown (fname, email, address, city, state, zip, password) VALUES ('$name','$email','$address','$city', '$state', '$zip', '$password')"; 
+     $data = mysql_query ($query)or die(mysql_error()); 
+     if($data) { echo "YOUR REGISTRATION IS COMPLETED..."; }
+   }
+
+
+?>
+
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -14,13 +34,14 @@
     <div class="container">    
         <form class="form-signin">
             <h2 class="form-signin-heading">Sign Up</h2>
+            <label for="inputName" class="sr-only">Name</label>
+            <input type="text" id="inputName" class="form-control" placeholder="Name" required autofocus>
             <label for="inputEmail" class="sr-only">Email address</label>
             <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
             <label for="inputPassword" class="sr-only">Password</label>
             <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
             <input type="password" id="inputPassword" class="form-control" placeholder="Confirm Password" required>
             <input type="address" id ="addressLine1" class="form-control" placeholder="Address Line 1">
-            <input type="address" id ="addressLine2" class="form-control" placeholder="Address Line 2">
             <input type="address" id ="city" class="form-control" placeholder="City">
             <input type="address" id ="state" class="form-control" placeholder="State">
             <input type="address" id ="zip" class="form-control" placeholder="Zip Code">
