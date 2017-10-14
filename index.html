@@ -22,11 +22,6 @@
     <link href="CSS/freelancer.css" rel="stylesheet">
 
     <script>
-      function toggleSignUp(){
-        document.getElementById('signin').style.display = "none";
-        document.getElementById('signup').style.display = "block";
-      }
-
       function toggleSignIn() {
       if (firebase.auth().currentUser) {
         // [START signout]
@@ -34,6 +29,7 @@
         // [END signout]
       } else {
         var email = document.getElementById('email').value;
+        console.log(email);
         var password = document.getElementById('password').value;
         if (email.length < 4) {
           alert('Please enter an email address.');
@@ -176,15 +172,16 @@
         // [END_EXCLUDE]
       });
       // [END authstatelistener]
+      document.getElementById('quickstart-sign-in').addEventListener('click', toggleSignIn, false);
       document.getElementById('signOutButton').addEventListener('click', toggleSignIn, false);
       document.getElementById('quickstart-sign-up').addEventListener('click', handleSignUp, false);
       document.getElementById('quickstart-verify-email').addEventListener('click', sendEmailVerification, false);
       document.getElementById('quickstart-password-reset').addEventListener('click', sendPasswordReset, false);
-      document.getElementById('quickstart-sign-up2').addEventListener('click', toggleSignUp, true);
     }
     window.onload = function() {
       initApp();
     };
+
 
     </script>
 
@@ -278,82 +275,12 @@
         </div>
     </section>
 
-    <!-- Portfolio Grid Section -->
-    <section id="portfolio">
-      <div class="container">
-        <h2 class="text-center">Volunteer</h2>
-        <hr class="star-primary">
-        <div class="row">
-          <div class="col-sm-4 portfolio-item">
-            <a class="portfolio-link" href="#portfolioModal1" data-toggle="modal">
-              <div class="caption">
-                <div class="caption-content">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="img/portfolio/cabin.png" alt="">
-            </a>
-          </div>
-          <div class="col-sm-4 portfolio-item">
-            <a class="portfolio-link" href="#portfolioModal2" data-toggle="modal">
-              <div class="caption">
-                <div class="caption-content">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="img/portfolio/cake.png" alt="">
-            </a>
-          </div>
-          <div class="col-sm-4 portfolio-item">
-            <a class="portfolio-link" href="#portfolioModal3" data-toggle="modal">
-              <div class="caption">
-                <div class="caption-content">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="img/portfolio/circus.png" alt="">
-            </a>
-          </div>
-          <div class="col-sm-4 portfolio-item">
-            <a class="portfolio-link" href="#portfolioModal4" data-toggle="modal">
-              <div class="caption">
-                <div class="caption-content">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="img/portfolio/game.png" alt="">
-            </a>
-          </div>
-          <div class="col-sm-4 portfolio-item">
-            <a class="portfolio-link" href="#portfolioModal5" data-toggle="modal">
-              <div class="caption">
-                <div class="caption-content">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="img/portfolio/safe.png" alt="">
-            </a>
-          </div>
-          <div class="col-sm-4 portfolio-item">
-            <a class="portfolio-link" href="#portfolioModal6" data-toggle="modal">
-              <div class="caption">
-                <div class="caption-content">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="img/portfolio/submarine.png" alt="">
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
 
 
     <!-- Contact Section -->
     <section id="contact">
       <div class="container">
-        <h2 class="text-center">Contact Me</h2>
+        <h2 class="text-center">Contact Us</h2>
         <hr class="star-primary">
         <div class="row">
           <div class="col-lg-8 mx-auto">
@@ -370,7 +297,7 @@
               <div class="control-group">
                 <div class="form-group floating-label-form-group controls">
                   <label>Email Address</label>
-                  <input class="form-control" id="email" type="email" placeholder="Email Address" required data-validation-required-message="Please enter your email address.">
+                  <input class="form-control" id="email2" type="email" placeholder="Email Address" required data-validation-required-message="Please enter your email address.">
                   <p class="help-block text-danger"></p>
                 </div>
               </div>
@@ -731,59 +658,46 @@
       </div>
     </div>
 
-
-          <div id="myModal" class="modal fade" role="dialog" style="background: white; width: auto;">
-                    <div id="close" style="position: absolute; left: 50px;">
+    <div id="myModal" class="modal fade" role="dialog" style="background: white; width: auto;">
+        <div id="close" style="position: absolute; left: 50px;">
           <a style="font-size: 50px;" href="">X</a>
         </div>
             <div class="modal-dialog">
+    <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
+
       <!-- Container for the demo -->
-      <div class="modal-header">
-          <h2 class="mdl-card__title-text">Login</h2>
-      </div>
-      <div class="modal-body">
-          <p>Enter an email and password below:</p>
-          <div id="signin">
+      <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
+        <div class="mdl-card__title mdl-color--light-blue-600 mdl-color-text--white">
+          <h2 class="mdl-card__title-text">Firebase Email &amp; Password Authentication</h2>
+        </div>
+        <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+          <p>Enter an email and password below and either sign in to an existing account or sign up</p>
+
           <input class="mdl-textfield__input" style="display:inline;width:auto;" type="text" id="email" name="email" placeholder="Email"/>
           &nbsp;&nbsp;&nbsp;
           <input class="mdl-textfield__input" style="display:inline;width:auto;" type="password" id="password" name="password" placeholder="Password"/>
           <br/><br/>
           <button disabled class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-sign-in" name="signin">Sign In</button>
-          </div>
-          <br/><br/>
-          <div id="signup" style="display: none;">
-            <input class="mdl-textfield__input" style="display:inline;width:auto;" type="text" id="newemail" name="newemail" placeholder="Email"/>
-          <br/><br/>
-          <input class="mdl-textfield__input" style="display:inline;width:auto;" type="password" id="newpassword" name="newpassword" placeholder="Password"/>
           &nbsp;&nbsp;&nbsp;
-          <input class="mdl-textfield__input" style="display:inline;width:auto;" type="password" id="newpassword2" name="newpassword2" placeholder="Password"/>
-          <br/><br/>
-          <input class="mdl-textfield__input" style="display:inline;width:auto;" type="tel" id="newphone" name="newphone" placeholder="Phone"/>
-          <br/><br/>
-          <input class="mdl-textfield__input" style="display:inline;width:auto;" type="text" id="newaddress" name="newaddress" placeholder="Address"/>
-          &nbsp;&nbsp;&nbsp;
-          <input class="mdl-textfield__input" style="display:inline;width:auto;" type="text" id="newcity" name="newcity" placeholder="City"/>
-          <br/><br/>
-          <input class="mdl-textfield__input" style="display:inline;width:auto;" type="number" id="zip" name="zip" placeholder="Zip"/>
-          <br/><br/>
           <button class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-sign-up" name="signup">Sign Up</button>
-          </div>
-          <br/><br/>
-          <a id="quickstart-sign-up2" name="signup">Sign Up</a>
+          &nbsp;&nbsp;&nbsp;
+          <button class="mdl-button mdl-js-button mdl-button--raised" disabled id="quickstart-verify-email" name="verify-email">Send Email Verification</button>
           &nbsp;&nbsp;&nbsp;
           <button class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-password-reset" name="verify-email">Send Password Reset Email</button>
 
           <!-- Container where we'll display the user details -->
-          <div class="modal-footer">
           <div class="quickstart-user-details-container">
             Firebase sign-in status: <span id="quickstart-sign-in-status">Unknown</span>
             <div>Firebase auth <code>currentUser</code> object value:</div>
             <pre><code id="quickstart-account-details">null</code></pre>
           </div>
-          </div>
         </div>
       </div>
-      </div>
+
+    </div>
+            </div>
+    </div>
+
 
     <script src="https://www.gstatic.com/firebasejs/4.5.1/firebase.js"></script>
     <script>
