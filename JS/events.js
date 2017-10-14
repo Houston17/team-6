@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $('#addEvents').on('click', function(e){
+    $('#addEvents').click(function() {
         console.log("Hi");
     })
 })
